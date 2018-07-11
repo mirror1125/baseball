@@ -1,13 +1,50 @@
-def culc_average(bats, hits):
-    average = hits / bats
+def calc_ba(ab, hits):
+    """
+    calclate batting average
+    :param ab: at bats
+    :param hits: hits
+    :return:
+    """
+    ba = hits / ab
+    ba_str = to_str_ratio(ba)
 
-    average_str = to_str_ratio(average)
+    return ba_str
 
-    return average_str
+
+def calc_slg(tb, ab):
+    """
+    calculate slugging average(SLG)
+    :param tb: total bases
+    :param ab: at bats
+    :return: SLG
+    """
+    slg = tb / ab
+    slg_str = to_str_ratio(slg)
+
+    return slg_str
+
+
+def calc_tb(single, double, triple, hr):
+    """
+    calculate total bases(TB)
+    :param single: number of single hits[int]
+    :param double: number of double hits[int]
+    :param triple: number of triple hits[int]
+    :param hr: number of Home Run(HR)[int]
+    :return: TB[int]
+    """
+
+    tb = single + (2 * double) + (3 * triple) + (4 * hr)
+
+    return tb
 
 
 def to_str_ratio(ratio):
-    # ratio_str = ""
+    """
+    ratio[float] to ratio[str](ex: .289)
+    :param ratio: ratio[float](ex: 0.314543...)
+    :return: ratio[str] (ex: .314, 1.215, etc)
+    """
     if ratio != 1.0:
         ratio_str = '{:.3f}'.format(ratio)
         ratio_str = ratio_str[1:]
@@ -16,8 +53,6 @@ def to_str_ratio(ratio):
     return ratio_str
 
 
-average = culc_average(20, 10)
-print(average)
 
 
 
