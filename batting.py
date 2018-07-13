@@ -1,6 +1,6 @@
 def calc_ba(ab, hits):
     """
-    calclate batting average
+    calculate batting average
     :param ab: at bats
     :param hits: hits
     :return:
