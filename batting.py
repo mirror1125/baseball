@@ -82,8 +82,5 @@ def to_str_ratio(ratio):
     return ratio_str
 
 
-ops = calc_ops(".333", ".587")
-print(ops)
-
 
 
