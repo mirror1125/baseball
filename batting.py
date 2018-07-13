@@ -11,17 +11,46 @@ def calc_ba(ab, hits):
     return ba_str
 
 
+def calc_obp(hits, bb, hbp, ab, sf):
+    """
+    calculate ON-BASE PERCENTAGE
+    :param hits: number of hits[int]
+    :param bb: number of BASE ON BALLS(BB)[int]
+    :param hbp: number of HIT BY PITCH(HBP)[int]
+    :param ab: number of AT BATS(AB)[int]
+    :param sf: number of SACRIFICE FLY(SF)[int]
+    :return: ON-BASE PERCENTAGE[string]
+    """
+    obp = (hits + bb + hbp) / (ab + bb + hbp + sf)
+    obp_str = to_str_ratio(obp)
+
+    return obp_str
+
+
 def calc_slg(tb, ab):
     """
     calculate slugging average(SLG)
     :param tb: total bases
     :param ab: at bats
-    :return: SLG
+    :return: SLG[string]
     """
     slg = tb / ab
     slg_str = to_str_ratio(slg)
 
     return slg_str
+
+
+def calc_ops(obp, slg):
+    """
+    calculate ON-BASE PLUS SLUGGING PERCENTAGE(OPS)
+    :param obp: ON-BASE PERCENTAGE(OBP)[str]
+    :param slg: SLUGGING AVERAGE(SLG)[str]
+    :return: OPS[str]
+    """
+    ops = float(obp) + float(slg)
+    ops_str = to_str_ratio(ops)
+
+    return ops_str
 
 
 def calc_tb(single, double, triple, hr):
@@ -30,7 +59,7 @@ def calc_tb(single, double, triple, hr):
     :param single: number of single hits[int]
     :param double: number of double hits[int]
     :param triple: number of triple hits[int]
-    :param hr: number of Home Run(HR)[int]
+    :param hr: number of Home Runs(HR)[int]
     :return: TB[int]
     """
 
@@ -53,7 +82,8 @@ def to_str_ratio(ratio):
     return ratio_str
 
 
-
+ops = calc_ops(".333", ".587")
+print(ops)
 
 
 
